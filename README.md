@@ -25,3 +25,13 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+# Github Pages
+
+Make repository public
+
+Settings -> Pages -> Select /docs directory
+
+# Github Actions
+
+https://angular.io/guide/testing#configure-project-for-github-actions
