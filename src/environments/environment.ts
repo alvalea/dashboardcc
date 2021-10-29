@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoidXNlciJ9.NUoV6cCxBPLWho9ZeWhqz2b59vfHazxz0teIJQUDF9I',
+  configURL: 'http://localhost:8080/proxy/config/get?key=PROPAGATION_DELAY'
 };
 
 /*
