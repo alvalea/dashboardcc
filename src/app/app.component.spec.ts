@@ -5,6 +5,9 @@ import { ConfigService } from './config.service'
 import { Configuration } from './configuration'
 import { asyncData } from './testing/async-observable-helpers';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTabsModule } from '@angular/material/tabs';
+
 describe('AppComponent', () => {
   let configServiceSpy: jasmine.SpyObj<ConfigService>;
 
@@ -16,6 +19,10 @@ describe('AppComponent', () => {
 
 	  await TestBed.configureTestingModule({
 		  declarations: [ AppComponent ],
+		  imports: [
+			  BrowserAnimationsModule,
+			  MatTabsModule
+		  ],
 		  providers: [ {provide: ConfigService, useValue: configServiceSpy}]
 	  }).compileComponents();
   });
