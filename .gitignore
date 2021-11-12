@@ -52,3 +52,6 @@ Thumbs.db
 
 # SearchDB
 .searchdb
+
+# Angular Material
+.angular

@@ -1,4 +1,8 @@
+run:
+	ng serve
+
 build:
+	ng build
 
 deploy:
 	ng build --output-path docs --base-href /dashboardcc/
