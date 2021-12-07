@@ -7,11 +7,16 @@ import { SettingsComponent } from './settings/settings.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
-  { path: 'telemetry', component: TelemetryComponent },
-  { path: 'commanding', component: CommandingComponent },
-  { path: 'settings', component: SettingsComponent },
-  { path: '',   redirectTo: '/telemetry', pathMatch: 'full' },
-  { path: '**', component: PageNotFoundComponent }
+  {
+    path: '',
+    children: [
+      { path: 'telemetry', component: TelemetryComponent },
+      { path: 'commanding', component: CommandingComponent },
+      { path: 'settings', component: SettingsComponent },
+      { path: '',   redirectTo: '/telemetry', pathMatch: 'full' },
+      { path: '**', component: PageNotFoundComponent }
+    ]
+  }
 ];
 
 @NgModule({
