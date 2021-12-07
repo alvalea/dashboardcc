@@ -7,12 +7,16 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TelemetryComponent } from './telemetry/telemetry.component';
+import { CommandingComponent } from './commanding/commanding.component';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    TelemetryComponent
+    TelemetryComponent,
+    CommandingComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
