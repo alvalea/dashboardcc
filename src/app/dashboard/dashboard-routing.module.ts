@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AuthGuard } from '../auth/auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { TelemetryComponent } from './telemetry/telemetry.component';
 
 const dashboardRoutes: Routes = [
   {
@@ -11,7 +10,19 @@ const dashboardRoutes: Routes = [
     component: DashboardComponent,
     canActivate: [AuthGuard],
     children: [
-      { path: 'telemetry', component: TelemetryComponent }
+      {
+        path: 'telemetry',
+        loadChildren: () => import('../telemetry/telemetry.module').then(m => m.TelemetryModule)
+      },
+
+      {
+        path: 'commanding',
+        loadChildren: () => import('../commanding/commanding.module').then(m => m.CommandingModule)
+      },
+      {
+        path: 'settings',
+        loadChildren: () => import('../settings/settings.module').then(m => m.SettingsModule)
+      }
     ]
   }
 ];
