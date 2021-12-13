@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { ConfigService } from './config.service';
 import { Configuration } from './configuration';
-import { asyncData } from './testing/async-observable-helpers';
+import { asyncData } from '../testing/async-observable-helpers';
 
 describe('ConfigService', () => {
   let configService: ConfigService;

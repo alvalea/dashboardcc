@@ -1,25 +1,43 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { SettingsComponent } from './settings.component';
 
+import { ConfigService } from './config.service'
+import { Configuration } from './configuration'
+import { asyncData } from '../testing/async-observable-helpers';
+
 describe('SettingsComponent', () => {
-  let component: SettingsComponent;
-  let fixture: ComponentFixture<SettingsComponent>;
+  let configServiceSpy: jasmine.SpyObj<ConfigService>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ SettingsComponent ]
-    })
-    .compileComponents();
+	  configServiceSpy = jasmine.createSpyObj('ConfigService', ['config']);
+
+	  let configuration: Configuration = { key: 'PROPAGATION_DELAY', value: '15' }
+	  configServiceSpy.config.and.returnValue(asyncData(configuration));
+
+	  await TestBed.configureTestingModule({
+		  imports: [ RouterTestingModule ],
+		  declarations: [ SettingsComponent ],
+		  providers: [ {provide: ConfigService, useValue: configServiceSpy}]
+	  }).compileComponents();
   });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(SettingsComponent);
-    component = fixture.componentInstance;
+  it('should create the settings', () => {
+    const fixture = TestBed.createComponent(SettingsComponent);
+    const settings = fixture.componentInstance;
+    expect(settings).toBeTruthy();
+  });
+
+  it(`should have as configuration.value 'value'`, () => {
+    const fixture = TestBed.createComponent(SettingsComponent);
+    const settings = fixture.componentInstance;
+    expect(settings.configuration.value).toEqual('value');
+  });
+
+  it('should render Propagation', () => {
+    const fixture = TestBed.createComponent(SettingsComponent);
     fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('h2').textContent).toContain('Propagation');
   });
 });

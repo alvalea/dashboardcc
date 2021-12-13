@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ConfigService } from './config.service';
+import { Configuration } from './configuration';
+
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsComponent implements OnInit {
 
-  constructor() { }
+  configuration: Configuration = { key: 'key', value: 'value'};
 
-  ngOnInit(): void {
+  constructor(private configService: ConfigService) { }
+
+  ngOnInit() {
+	  this.configService.config().
+		  subscribe(configuration =>
+			    this.configuration = configuration);
   }
 
 }
