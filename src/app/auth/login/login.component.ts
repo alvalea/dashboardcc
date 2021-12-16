@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+
+import { FormGroup, FormBuilder } from '@angular/forms';
+
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -8,17 +11,25 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  message: string;
 
-  constructor(public authService: AuthService, public router: Router) {
-    this.message = this.getMessage();
+  message: string;
+  form: FormGroup;
+
+  constructor(private authService: AuthService,
+              private router: Router,
+              private formBuilder: FormBuilder) {
+	  this.message = this.getMessage();
+	  this.form = this.formBuilder.group({
+		  username: [""],
+		  password: [""],
+	  });
   }
 
   getMessage() {
     return 'Logged ' + (this.authService.isLoggedIn ? 'in' : 'out');
   }
 
-  login() {
+  submit() {
     this.message = 'Trying to log in ...';
 
     this.authService.login().subscribe(() => {
