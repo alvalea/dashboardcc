@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { HistoryService } from './history.service';
+
 @Component({
   selector: 'app-telemetry',
   templateUrl: './telemetry.component.html',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TelemetryComponent implements OnInit {
 
-  constructor() { }
+  history: string = '';
+
+  constructor(private historyService: HistoryService) {
+  }
 
   ngOnInit(): void {
   }
 
+  getTM() {
+	  this.historyService.history().
+		  subscribe(history =>
+			    this.history = JSON.stringify(history));
+  }
 }

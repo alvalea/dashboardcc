@@ -30,7 +30,7 @@ describe('ConfigService', () => {
   });
 
   it('should return 15', () => {
-    configService.config().subscribe(
+    configService.getConfig('PROPAGATION_DELAY').subscribe(
         configuration => expect(configuration.value).toEqual('15')
     );
     expect(httpClientSpy.get.calls.count()).toBe(1, 'one call');

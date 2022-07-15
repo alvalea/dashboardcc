@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ConfigService } from './config.service';
+import { SimcliService } from './simcli.service';
 import { Configuration } from './configuration';
 
 @Component({
@@ -10,14 +11,30 @@ import { Configuration } from './configuration';
 })
 export class SettingsComponent implements OnInit {
 
+  private propDelay: string = 'PROPAGATION_DELAY';
+
   configuration: Configuration = { key: 'key', value: 'value'};
 
-  constructor(private configService: ConfigService) { }
+  simcli: string = '';
+
+  constructor(private configService: ConfigService,
+              private simcliService: SimcliService) { }
 
   ngOnInit() {
-	  this.configService.config().
+	  this.configService.getConfig(this.propDelay).
 		  subscribe(configuration =>
 			    this.configuration = configuration);
   }
 
+  startTM() {
+	  this.simcliService.startTM().
+		  subscribe(simcli =>
+			    this.simcli = simcli.result);
+  }
+
+  stopTM() {
+	  this.simcliService.stopTM().
+		  subscribe(simcli =>
+			    this.simcli = simcli.result);
+  }
 }

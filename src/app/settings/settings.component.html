@@ -1,3 +1,12 @@
-<p>settings works!</p>
-<h2>Propagation Delay</h2>
+<p>Settings</p>
+<h2>Events Log</h2>
+<a href="https://my.papertrailapp.com/groups/28873481/events?q=%22app%2Fweb%22" target="_blank">Events Log</a>
+<br/><br/>
+<h2>Simulator Client</h2>
+<button type="button" (click)="startTM()">Start TM</button>
+<button type="button" (click)="stopTM()">Stop TM</button>
+<br/><br/>
+{{simcli}}
+<br/><br/>
+<h2 id='propagation'>Propagation Delay</h2>
 <p>{{configuration.value}}</p>
