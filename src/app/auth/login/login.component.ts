@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 
 import { AuthService } from '../auth.service';
 
@@ -13,11 +13,11 @@ import { AuthService } from '../auth.service';
 export class LoginComponent {
 
   message: string;
-  form: FormGroup;
+  form: UntypedFormGroup;
 
   constructor(private authService: AuthService,
               private router: Router,
-              private formBuilder: FormBuilder) {
+              private formBuilder: UntypedFormBuilder) {
 	  this.message = this.getMessage();
 	  this.form = this.formBuilder.group({
 		  username: [""],
