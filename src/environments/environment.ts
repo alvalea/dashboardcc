@@ -7,7 +7,8 @@ export const environment = {
   token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoidXNlciJ9.NUoV6cCxBPLWho9ZeWhqz2b59vfHazxz0teIJQUDF9I',
   configGetURL: 'http://localhost:8080/proxy/config/get?key=',
   historyURL: 'http://localhost:8080/proxy/history/tm?pageSize=2&page=1',
-  simcliURL: 'http://localhost:8080/proxy/simcli'
+  simcliURL: 'http://localhost:8080/proxy/simcli',
+  commandDocURL: 'http://localhost:8080/command/docs'
 };
 
 /*
