@@ -1,25 +1,31 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { FormBuilder } from '@angular/forms';
 
 import { CommandingComponent } from './commanding.component';
+import { CommandService } from './command.service';
+import { asyncData } from '../testing/async-observable-helpers';
 
 describe('CommandingComponent', () => {
-  let component: CommandingComponent;
-  let fixture: ComponentFixture<CommandingComponent>;
+  let commandServiceSpy: jasmine.SpyObj<CommandService>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ CommandingComponent ]
-    })
-    .compileComponents();
+	  commandServiceSpy = jasmine.createSpyObj('CommandService', ['loadCommand']);
+	  commandServiceSpy.loadCommand.and.returnValue(asyncData('Command sent successfully'));
+
+	  await TestBed.configureTestingModule({
+		  imports: [ RouterTestingModule ],
+		  declarations: [ CommandingComponent ],
+		  providers: [
+        FormBuilder,
+        {provide: CommandService, useValue: commandServiceSpy}
+      ]
+	  }).compileComponents();
   });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CommandingComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should create the commading', () => {
+    const fixture = TestBed.createComponent(CommandingComponent);
+    const settings = fixture.componentInstance;
+    expect(settings).toBeTruthy();
   });
 });

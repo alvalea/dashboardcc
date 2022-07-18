@@ -8,7 +8,8 @@ export const environment = {
   configGetURL: 'http://localhost:8080/proxy/config/get?key=',
   historyURL: 'http://localhost:8080/proxy/history/tm?pageSize=2&page=1',
   simcliURL: 'http://localhost:8080/proxy/simcli',
-  commandDocURL: 'http://localhost:8080/command/docs'
+  commandDocURL: 'http://localhost:8080/proxy/command/docs',
+  commandURL: 'http://localhost:8080/proxy/command/api/cmd'
 };
 
 /*

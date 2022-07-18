@@ -1,3 +1,64 @@
-<p>Commanding</p>
-<br/>
 <a href={{commandDocURL}} target="_blank">Commanding OpenAPI</a>
+<br/><br/>
+<h4>Load Command</h4>
+<form [formGroup]="loadCmdForm" (ngSubmit)="onLoadCmd()">
+
+  <div>
+    <label for="cmdName">
+      Command Name
+    </label>
+    <input id="cmdName" type="text" formControlName="cmdName" placeholder="CMD02000">
+  </div>
+
+  <div>
+    <label for="p1Name">
+      Param1
+    </label>
+    <input id="p1Name" type="text" formControlName="p1Name" placeholder="PARAM000">
+    <input id="p1Value" type="text" formControlName="p1Value" placeholder="1">
+  </div>
+
+  <div>
+    <label for="p2Name">
+      Param2
+    </label>
+    <input id="p2Name" type="text" formControlName="p2Name" placeholder="PARAM001">
+    <input id="p2Value" type="text" formControlName="p2Value" placeholder="1">
+  </div>
+
+  <div>
+    <label for="p3Name">
+      Param3
+    </label>
+    <input id="p3Name" type="text" formControlName="p3Name" placeholder="PARAM002">
+    <input id="p3Value" type="text" formControlName="p3Value" placeholder="1">
+  </div>
+
+  <div>
+    <label for="p4Name">
+      Param4
+    </label>
+    <input id="p4Name" type="text" formControlName="p4Name" placeholder="PARAM003">
+    <input id="p4Value" type="text" formControlName="p4Value" placeholder="1">
+  </div>
+
+  <div>
+    <label for="p5Name">
+      Param5
+    </label>
+    <input id="p5Name" type="text" formControlName="p5Name" placeholder="PARAM004">
+    <input id="p5Value" type="text" formControlName="p5Value" placeholder="1">
+  </div>
+
+  <div>
+    <label for="p6Name">
+      Param6
+    </label>
+    <input id="p6Name" type="text" formControlName="p6Name" placeholder="PARAM005">
+    <input id="p6Value" type="text" formControlName="p6Value" placeholder="1">
+  </div>
+
+  <button class="button" type="submit">Load</button>
+</form>
+<br/>
+{{loadCmdResponse}}

@@ -1,32 +1,31 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClient } from '@angular/common/http';
 
-import { SimcliService } from './simcli.service';
-import { Simcli } from './simcli';
+import { CommandService } from './command.service';
 import { asyncData } from '../testing/async-observable-helpers';
 
-describe('SimcliService', () => {
-  let simcliService: SimcliService;
+describe('CommandService', () => {
+  let commandService: CommandService;
   let httpClientSpy: jasmine.SpyObj<HttpClient>;
 
   beforeEach(() => {
     httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
 
-    let simcli: Simcli = { result: 'simcli' };
-    httpClientSpy.get.and.returnValue(asyncData(simcli));
+    let response: string = 'Command sent successfully';
+    httpClientSpy.get.and.returnValue(asyncData(response));
 
     TestBed.configureTestingModule({
       providers: [
-        SimcliService,
+        CommandService,
         { provide: HttpClient, useValue: httpClientSpy }
       ]
     });
-    simcliService = TestBed.inject(SimcliService);
+    commandService = TestBed.inject(CommandService);
     httpClientSpy = TestBed.inject(HttpClient) as jasmine.SpyObj<HttpClient>;
   });
 
   it('should be created', () => {
-    expect(simcliService).toBeTruthy();
+    expect(commandService).toBeTruthy();
   });
 
 });
