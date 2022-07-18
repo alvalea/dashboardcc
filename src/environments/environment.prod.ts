@@ -4,6 +4,6 @@ export const environment = {
   configGetURL: 'https://microcc.herokuapp.com/proxy/config/get?key=',
   historyURL: 'https://microcc.herokuapp.com/proxy/history/tm?pageSize=2&page=1',
   simcliURL: 'https://microcc.herokuapp.com/proxy/simcli',
-  commandDocURL: 'https://microcc.herokuapp.com/proxy/command/docs',
+  commandDocURL: 'https://microcc.herokuapp.com/command/docs',
   commandURL: 'https://microcc.herokuapp.com/proxy/command/api/cmd'
 };
